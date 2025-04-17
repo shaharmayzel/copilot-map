@@ -4,6 +4,10 @@ import { promptTypes, PromptTypeKey } from './const/promptTypes';
 import Header from './components/Header';
 import PromptControls from './components/PromptControls';
 import PromptOutput from './components/PromptOutput';
+import DarkModeToggle from './components/DarkModeToggle';
+import FormattingToggle from './components/FormattingToggle';
+import CodeContextInput from './components/CodeContextInput';
+import CopyPromptButton from './components/CopyPromptButton';
 
 const App = () => {
   const [type, setType] = useState<PromptTypeKey>('state');
@@ -58,38 +62,19 @@ const App = () => {
       />
 
       <div className="mb-4 flex gap-6 flex-wrap">
-        <label className="text-sm">
-          <input
-            type="checkbox"
-            checked={includeFormatting}
-            onChange={() => setIncludeFormatting(!includeFormatting)}
-            className="mr-1"
-          />
-          Include Formatting Instructions
-        </label>
-
-        <button
-          onClick={() => navigator.clipboard.writeText(fullPrompt)}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded"
-        >
-          Copy Prompt
-        </button>
-      </div>
-
-      <div className="mb-4">
-        <label className="block mb-1 text-sm">Code Context (optional):</label>
-       <textarea
-          value={contextCode}
-          onChange={(e) => setContextCode(e.target.value)}
-          rows={8}
-          placeholder="Paste relevant code here..."
-          className={`w-full rounded px-4 py-3 text-sm font-mono leading-snug resize-y shadow-inner border ${
-            darkMode
-              ? 'bg-gray-800 text-white border-gray-700 placeholder-gray-500'
-              : 'bg-gray-100 text-black border-gray-300 placeholder-gray-400'
-          }`}
+        <FormattingToggle
+          includeFormatting={includeFormatting}
+          toggleFormatting={() => setIncludeFormatting(!includeFormatting)}
         />
+        <CopyPromptButton fullPrompt={fullPrompt} />
       </div>
+
+      <CodeContextInput
+        contextCode={contextCode}
+        setContextCode={setContextCode}
+        darkMode={darkMode}
+      />
+
       {fullPrompt && <PromptOutput prompt={fullPrompt} />}
     </div>
   );
