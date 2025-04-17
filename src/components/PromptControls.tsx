@@ -1,15 +1,10 @@
-import React, { FC, ChangeEvent } from 'react';
+import React, { ChangeEvent, FC } from 'react';
+import { useAppContext } from '../hooks/useAppContext';
 import { PromptTypeKey, promptTypes } from '../const/promptTypes';
 
-interface Props {
-  type: PromptTypeKey;
-  name: string;
-  darkMode: boolean;
-  setType: (type: PromptTypeKey) => void;
-  setName: (name: string) => void;
-}
+const PromptControls: FC = () => {
+  const { type, setType, name, setName, darkMode } = useAppContext();
 
-const PromptControls: FC<Props> = ({ type, name, darkMode, setType, setName }) => {
   const handleTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setType(e.target.value as PromptTypeKey);
   };
@@ -41,7 +36,9 @@ const PromptControls: FC<Props> = ({ type, name, darkMode, setType, setName }) =
           type="text"
           value={name}
           onChange={handleNameChange}
-          className="p-2 rounded w-full text-black"
+          className={`p-2 rounded w-full ${
+            darkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black'
+          }`}
         />
       </div>
     </>

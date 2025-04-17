@@ -1,12 +1,13 @@
 import React from 'react';
+import { useAppContext } from '../hooks/useAppContext';
 
-interface CopyPromptButtonProps {
-  fullPrompt: string;
-}
+const CopyPromptButton: React.FC = () => {
+  const { fullPrompt } = useAppContext();
 
-const CopyPromptButton: React.FC<CopyPromptButtonProps> = ({ fullPrompt }) => {
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(fullPrompt);
+    if (fullPrompt) {
+      navigator.clipboard.writeText(fullPrompt);
+    }
   };
 
   return (

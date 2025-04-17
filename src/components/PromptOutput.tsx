@@ -1,8 +1,14 @@
+import React from 'react';
+import { useAppContext } from '../hooks/useAppContext';
 
-import React, { FC } from 'react';
+const PromptOutput: React.FC = () => {
+  const { fullPrompt } = useAppContext();
 
-const PromptOutput: FC<{ prompt: string }> = ({ prompt }) => (
-  <pre className="whitespace-pre-wrap bg-gray-800 p-4 rounded text-sm overflow-auto">{prompt}</pre>
-);
+  return (
+    <pre className="whitespace-pre-wrap bg-gray-800 p-4 rounded text-sm overflow-auto">
+      {fullPrompt}
+    </pre>
+  );
+};
 
 export default PromptOutput;
