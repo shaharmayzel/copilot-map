@@ -8,8 +8,8 @@ const CopyPromptButton: React.FC = () => {
   const copyToClipboard = () => {
     if (fullPrompt) {
       navigator.clipboard.writeText(fullPrompt);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setCopied(true); 
+      setTimeout(() => setCopied(false), 2000); 
     }
   };
 
@@ -22,7 +22,7 @@ const CopyPromptButton: React.FC = () => {
         Copy Prompt
       </button>
       {copied && (
-        <div className="absolute top-1/2 left-full ml-2 transform -translate-y-1/2 bg-green-500 text-white text-sm px-3 py-1 rounded shadow">
+        <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-sm px-3 py-1 rounded shadow">
           Copied!
         </div>
       )}

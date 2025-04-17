@@ -33,12 +33,18 @@ const App = () => {
     <div className="min-h-screen bg-gray-900 text-white p-6">
       <Header />
       <PromptControls />
-      <div className="mb-4 flex gap-6 flex-wrap">
-        <FormattingToggle />
-        <CopyPromptButton />
+      <div className="flex flex-row justify-between gap-6">
+        <div>
+          <div className="mb-4 flex gap-6 flex-wrap">
+            <FormattingToggle />
+            <CopyPromptButton />
+          </div>
+          <CodeContextInput />
+        </div>
+        <div className="flex-grow h-full">
+          <PromptOutput />
+        </div>
       </div>
-      <CodeContextInput />
-      <PromptOutput />
     </div>
   );
 };

@@ -5,11 +5,11 @@ const CodeContextInput: React.FC = () => {
   const { contextCode, updateContextCode, darkMode } = useCodeContext();
 
   return (
-    <div className="mb-4">
+    <div className="mb-4 mt-20">
       <label className="block mb-1 text-sm">Code Context (optional):</label>
       <textarea
         value={contextCode}
-        onChange={(e) => updateContextCode(e.target.value)}
+        onChange={(e) => updateContextCode(e.target.value)} 
         rows={8}
         placeholder="Paste relevant code here..."
         className={`w-full rounded px-4 py-3 text-sm font-mono leading-snug resize-y shadow-inner border ${
