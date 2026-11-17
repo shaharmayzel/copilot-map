@@ -2,7 +2,7 @@
 
 I got tired of writing the same AI prompts over and over, and I wanted ChatGPT to just get my vibe already. So I built this.
 
-This thing builds prompts like I would (In theory) — clean, typed, minimal nonsense.
+This thing builds prompts like I would (In theory) - clean, typed, minimal nonsense.
 
 ## What It Does
 
